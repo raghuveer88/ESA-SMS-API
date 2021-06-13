@@ -41,7 +41,7 @@ then you can check the database for changes
 The link for the deployed app in heroku is <a href= "https://esa-sms-assignment.herokuapp.com/">Click Here</a>
 
 ## Note 
-The HTTP method used for both API are POST (you may try it in postman to check the results)
+The HTTP method used for both API are POST (you may try it in postman to check the results).<br>
 For authentication (to be valid) you need to set the header key as secret-key and the value as Bearer `<token number>` (in my case the Token number is 1111) you may change it if you want!!
 
 
