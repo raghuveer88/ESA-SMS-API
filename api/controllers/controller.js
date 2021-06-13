@@ -9,8 +9,8 @@ let cacheKeys = new Map()
 
 // inboundSMS function - To check an inbound sms
 exports.inboundSMS = async (req, res) => { 
-    const appSecret = req.headers['app-secret'];
-    console.log(req.headers['app-secret']);
+    const appSecret = req.headers['secret-key'];
+    //console.log(req.headers['secret-key']);
     if (appSecret === "Bearer " + process.env.TOKEN_NUMBER) {
         let newSMS = new SMSSchema (req.body);
         if (newSMS.from) {
@@ -85,7 +85,7 @@ exports.inboundSMS = async (req, res) => {
 
 // outboundSMS function - To check an outbound sms
 exports.outboundSMS = async (req, res) => {
-    const appSecret = req.headers['app-secret'];
+    const appSecret = req.headers['secret-key'];
     if (appSecret === "Bearer " + process.env.TOKEN_NUMBER) {
         let newSMS = new SMSSchema (req.body);
         if (newSMS.from) {
