@@ -8,11 +8,11 @@ let should = chai.should();
 
 chai.use(chaiHttp);
 describe('Books', () => {
-    beforeEach((done) => { //Before each test we empty the database
-        SMS.remove({}, (err) => {
-           done();
-        });
-    });
+    // beforeEach((done) => { //Before each test we empty the database
+    //     SMS.remove({}, (err) => {
+    //        done();
+    //     });
+    // });
 
   /*
   * Test the /POST inboundSMS route
@@ -20,13 +20,13 @@ describe('Books', () => {
   describe('/POST inboundSMS', () => {
     it('It should POST an inbound SMS', (done) => {
         let sms = {
-            from: 1234567890,
-            to: 1234567,
-            text: "Hello World"
+            from: 999999999,
+            to: 888888888,
+            text: "Hello inbound"
         }
       chai.request(server)
           .post('/inbound/sms')
-          .set('app-secret', 'Bearer 1234567890')
+          .set('secret-key', 'Bearer 1111')
           .send(sms)
           .end((err, res) => {
                 res.should.have.status(201);
@@ -42,13 +42,13 @@ describe('Books', () => {
   describe('/POST outboundSMS', () => {
     it('It should POST an outbound SMS', (done) => {
         let sms = {
-            from: 1234567890,
-            to: 1234567,
-            text: "Hello World"
+            from: 999999999,
+            to: 888888888,
+            text: "Hello outbound"
         }
       chai.request(server)
           .post('/outbound/sms')
-          .set('app-secret', 'Bearer 1234567890')
+          .set('secret-key', 'Bearer 1111')
           .send(sms)
           .end((err, res) => {
                 res.should.have.status(201);
@@ -70,7 +70,7 @@ describe('Books', () => {
         }
       chai.request(server)
           .get('/outbound/sms')
-          .set('app-secret', 'Bearer 1234567890')
+          .set('secret-key', 'Bearer 1111')
           .send(sms)
           .end((err, res) => {
                 res.should.have.status(405);
